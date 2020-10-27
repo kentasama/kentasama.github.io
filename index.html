@@ -475,14 +475,26 @@
 				return item;
 			}
 		}
+
+		var detectOffline = function(){
+			var _url = window.location.href.toLowerCase();
+			if(_url.indexOf('kentasama') === -1){
+				document.getElementById('online').setAttribute('style', 'display:none');
+			}
+		}
 	</script>
 </head>
-<body onload="centerExtras('welcome')">
+<body onload="centerExtras('welcome');detectOffline();">
 <div id="welcome" class="extras">
 	<h1 class="brown">Welcome!</h1>
 	<p class="brown">Please enter desired name: </p><br>
 	<input type="text" id="name"><br><br>
 	<button class="button w50 primary" onclick="setName()">OK</button>
+	<br>
+	<div id="online">
+		<p>You can save this page and play offline.</p>
+		<a onclick="this.href='data:text/html;charset=UTF-8,'+encodeURIComponent(document.documentElement.outerHTML)" href="#" download="shiriken.html">Download</a>		
+	</div>
 </div>
 
 <div id="hi" class="extras" style="display:none">
